@@ -130,7 +130,7 @@ export function directorySyncSupported(platform: NodeJS.Platform = process.platf
   return platform !== "win32";
 }
 
-/** Windows reports 0666 for every file; owner-only access there comes from the user profile ACL. */
+/** Windows reports 0666 for every file, so the mode check is skipped there. ACL validation is not implemented. */
 export function secretModeIsPrivate(
   mode: number,
   platform: NodeJS.Platform = process.platform,
